@@ -1,0 +1,32 @@
+param(
+    [Parameter(Mandatory=$true)]
+    [ValidateSet("major", "minor", "patch")]
+    [string]$Part
+)
+
+$tag = git describe --tags --abbrev=0
+$tag = $tag.TrimStart("v")
+
+$parts = $tag.Split(".")
+[int]$major = $parts[0]
+[int]$minor = $parts[1]
+[int]$patch = $parts[2]
+
+switch ($Part) {
+    "major" {
+        $major++
+        $minor = 0
+        $patch = 0
+    }
+    "minor" {
+        $minor++
+        $patch = 0
+    }
+    "patch" {
+        $patch++
+    }
+}
+
+$newTag = "v{0}.{1}.{2}" -f $major,$minor,$patch
+git tag -a $newTag -m "Bump $Part -> $newTag"
+Write-Output "Created tag $newTag"
