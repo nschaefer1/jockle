@@ -1,4 +1,6 @@
 import logging 
 
-class APIPost:
+from backend import BaseAPI
+
+class APIPost(BaseAPI):
     pass

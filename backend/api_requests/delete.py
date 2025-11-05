@@ -1,4 +1,6 @@
 import logging 
 
-class APIDelete:
+from backend import BaseAPI
+
+class APIDelete(BaseAPI):
     pass

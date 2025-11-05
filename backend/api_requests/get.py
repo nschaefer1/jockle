@@ -1,5 +1,7 @@
 import logging 
 
-class APIGet:
-    
+from backend import BaseAPI
+
+class APIGet(BaseAPI):
+    pass
     

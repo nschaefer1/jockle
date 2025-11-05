@@ -1,4 +1,6 @@
 import logging 
 
-class APIPatch:
+from backend import BaseAPI
+
+class APIPatch(BaseAPI):
     pass
