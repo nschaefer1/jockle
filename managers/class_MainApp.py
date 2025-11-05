@@ -2,6 +2,8 @@ import os
 import sys
 import webview
 
+from backend import API
+
 class MainApp:
 
     def __init__(self):
@@ -9,9 +11,9 @@ class MainApp:
         # Database control
         self.db_manager = None
         # API (pass in DB manager here)
-        self.api = None
+        self.api = API(self.db_manager)
         # App entry point
-        index_html = self.app_path('').replace('\\','/')
+        index_html = self.app_path('../frontend/views/inventory.html').replace('\\','/')
 
         # Instantiate the window
         self.window = webview.create_window(
@@ -30,7 +32,7 @@ class MainApp:
         return os.path.join(base_dir, relative_path)
 
     def run(self):
-        webview.start(debug=True)
+        webview.start(debug=False)
 
 
 if __name__ == '__main__':
