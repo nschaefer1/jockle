@@ -1,3 +1,3 @@
 
-from .api_response import *
-from .db_return import *
+from .api_response import APIResponse
+from .db_return import DBReturn

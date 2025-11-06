@@ -1,4 +1,3 @@
 
-from dataclass_APIResponse import *
-from backend.class_BaseAPI import *
-from api import *
+from .base_api import BaseAPI
+from .api import API

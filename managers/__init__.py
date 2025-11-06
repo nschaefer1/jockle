@@ -1,2 +1,3 @@
 
-from managers.class_MainApp import *
+from .main_app import MainApp
+from .db_manager import DBManager
