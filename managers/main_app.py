@@ -4,6 +4,7 @@ import webview
 
 from backend import API
 
+
 class MainApp:
 
     def __init__(self):
