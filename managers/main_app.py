@@ -2,6 +2,7 @@ import os
 import sys
 import webview
 
+from .db_manager import DBManager
 from backend import API
 
 
@@ -10,7 +11,7 @@ class MainApp:
     def __init__(self):
         
         # Database control
-        self.db_manager = None
+        self.db_manager = DBManager()
         # API (pass in DB manager here)
         self.api = API(self.db_manager)
         # App entry point
