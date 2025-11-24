@@ -1,4 +1,6 @@
 
+// ROUTER FOR HTMLS
+// THIS SHOULD BE IN EVERY HTML FILE
 
 async function go(page) {
     const map = {
@@ -23,3 +25,11 @@ async function go(page) {
 
 // Make buttons work
 window.go = go;
+
+// F5 or Ctrl+R → refresh current page
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'F5' || (e.ctrlKey && e.key === 'r')) {
+        e.preventDefault();
+        location.reload();
+    }
+});
