@@ -15,7 +15,7 @@ class MainApp:
         # API (pass in DB manager here)
         self.api = API(self.db_manager)
         # App entry point
-        index_html = self.app_path('../frontend/views/inventory.html').replace('\\','/')
+        index_html = self.app_path('../frontend/html/inventory.html').replace('\\','/')
 
         # Instantiate the window
         self.window = webview.create_window(
