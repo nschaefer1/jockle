@@ -82,7 +82,7 @@ pip install pyinstaller
 ```
 2. From the project root, run:
 ```
-pyinstaller --noconfirm --onefile --windowed main.py
+pyinstaller --noconfirm --onefile --windowed --name Jockle main.py
 ```
 - `--onefile` bundles everything into a single `.exe`
 - `--windowed` runs without opening a terminal window
