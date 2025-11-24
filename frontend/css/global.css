@@ -1,0 +1,73 @@
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #f5f5fa;
+    color: #1f1b2e;
+    font-size: 12px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    font-size: 36px;
+    padding: 0px;
+    font-family: 'Book Antiqua';
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #1f1b2e; /* or your accent color */
+    margin: 0px 0px 20px 0px;
+    opacity: 0.4;
+}
+
+/* Container segments */
+.raised-container {
+    flex: 1;
+    background-color: #FAFAFD;
+    padding: 10px; 
+    border-style: outset;
+    border-radius: 16px;
+}
+
+/* Inventory Items */
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    max-height: 100%;
+    overflow: auto;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    background-color: #ffffff;
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    border-color: #1f1b2e;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.card:hover {
+    cursor: pointer;
+    border-color: #9d00ff;
+    border-style: solid;
+    border-width: 2px;
+}
