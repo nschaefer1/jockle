@@ -1,7 +1,12 @@
+.venv/
+.vscode/
+.env
 
 __pycache__/
 sqlite_db.db
+jockle_db.db
 build/
 dist/
+secret/
 
 Jockle.spec
