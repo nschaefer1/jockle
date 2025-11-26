@@ -34,7 +34,7 @@ class MainApp:
         return os.path.join(base_dir, relative_path)
 
     def run(self):
-        webview.start(debug=True)
+        webview.start(debug=(os.getenv("DEBUG") == 'true'))
 
 
 if __name__ == '__main__':
