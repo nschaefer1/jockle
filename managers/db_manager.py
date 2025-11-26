@@ -3,7 +3,7 @@ import logging
 import os
 
 from models import DBReturn
-from utils import read_basic_file
+from utils import read_basic_file, load_csv
 
 class DBManager:
     
@@ -14,6 +14,10 @@ class DBManager:
         result = self.execute_path(path = 'sql/create_dim.sql', script = True)
         if not result.success:
             raise RuntimeError('Database initialization failed')
+
+        # Only run seeding if we're in dev mode
+        if os.getenv('DEBUG') == 'true':
+            self._dev_seeding()
 
     def execute(self, query, params=None):
         '''
@@ -82,4 +86,45 @@ class DBManager:
             return self.execute_script(query)
         else:
             return self.execute(query, params)
+        
+    def executemany(self, query, param_list):
+        '''
+        Efficient batch insert/update/delete.
+        param_list: list of tuples matching the ? placeholders
+        '''
+        with sql.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            try:
+                cursor.executemany(query, param_list)
+                conn.commit()
+                return DBReturn(success=True)
+            except Exception as e:
+                conn.rollback()
+                logging.exception(f'executemany failed: {e}')
+                if os.getenv("DEBUG") == 'true':
+                    raise
+                return DBReturn(success=False)
 
+    def _dev_seeding(self):
+        '''
+        Seeding function for development mode
+        This should not be ran outside of development
+        '''
+
+        # dim_inventory seeding
+        raw_rows = load_csv('sql/dev/seed_dim_inventory.csv')
+        rows = [(
+            r['inv_ck'],
+            r['inv_name'],
+            r['inv_desc'],
+            r['child_ind'],
+            r['inv_type'],
+            r['equip_location'],
+            r['rarity']
+        ) for r in raw_rows]
+        result = self.executemany(
+            'INSERT INTO dim_inventory VALUES (?,?,?,?,?,?,?) ON CONFLICT(inv_ck) DO NOTHING;',
+            rows
+        )
+        if not result.success:
+            raise RuntimeError('Database dev seeding failed')

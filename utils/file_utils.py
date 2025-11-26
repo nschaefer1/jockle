@@ -1,4 +1,4 @@
-
+import csv
 
 # Read a given .txt or .sql file
 def read_basic_file(path):
@@ -9,3 +9,8 @@ def read_basic_file(path):
 def write_txt(data, path: str):
     with open(path, 'w', encoding='utf-8') as f:
         f.write(data)
+
+# Return a list of dictionaries based on the given CSV
+def load_csv(path):
+    with open(path, newline='', encoding='utf-8-sig') as f:
+        return list(csv.DictReader(f))
