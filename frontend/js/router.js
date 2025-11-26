@@ -23,7 +23,7 @@ async function go(page) {
     }
 }
 
-// Make buttons work
+// Expose function to the window
 window.go = go;
 
 // F5 or Ctrl+R → refresh current page
