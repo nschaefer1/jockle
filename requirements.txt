@@ -1,1 +1,3 @@
-webview
+setuptools
+pywebview
+python-dotenv
