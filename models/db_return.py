@@ -9,8 +9,9 @@ from typing import (
 
 @dataclass
 class DBReturn:
-    columns: Tuple[str, ...]
-    rows: Optional[List[Tuple[Any,... ]]]
-    row: Optional[Tuple[Any, ...]]
-    row_count: int
+    success: bool
+    columns: Optional[Tuple[str, ...]] = None
+    rows: Optional[List[Tuple[Any,... ]]] = None
+    row: Optional[Tuple[Any, ...]] = None
+    row_count: Optional[int] = None
     
