@@ -92,6 +92,7 @@ hr {
 
 .card {
     display: flex;
+    position: relative;
     justify-content: center;
     align-items: center;
     padding: 5px;
@@ -116,3 +117,15 @@ hr {
     height: 100%;
 }
 
+.card-num {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 2px;
+    font-size: 12px;
+    font-weight: bold;
+    background:rgba(31, 27, 46, 0.9);
+    color:#f5f5fa; 
+    border-radius: 8px;
+    padding: 1px 5px;
+}
