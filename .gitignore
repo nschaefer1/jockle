@@ -1,6 +1,7 @@
 .venv/
 .vscode/
 .env
+sql/dev/
 
 __pycache__/
 sqlite_db.db
@@ -10,3 +11,4 @@ dist/
 secret/
 
 Jockle.spec
+testing.ipynb
