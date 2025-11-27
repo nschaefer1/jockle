@@ -13,7 +13,12 @@ class DBManager:
         # Initial DB Setup ran at app startup during class instantiation
         result = self.execute_path(path = 'sql/create_dim.sql', script = True)
         if not result.success:
-            raise RuntimeError('Database initialization failed')
+            raise RuntimeError('Database dimension initialization failed')
+        result = self.execute_path(path = 'sql/create_ft.sql', script = True)
+        if not result.success:
+            raise RuntimeError('Database fact initialization failed')
+        # TODO add index creation calls for foriegn keys
+            
 
         # Only run seeding if we're in dev mode
         if os.getenv('DEBUG') == 'true':
@@ -127,4 +132,32 @@ class DBManager:
             rows
         )
         if not result.success:
-            raise RuntimeError('Database dev seeding failed')
+            raise RuntimeError('Database dim_inventory seeding failed')
+
+        # dim_character seeding
+        raw_rows = load_csv('sql/dev/seed_dim_character.csv')
+        rows = [(
+            r['char_ck'],
+            r['char_name']
+        ) for r in raw_rows]
+        result = self.executemany(
+            'INSERT INTO dim_character (char_ck, char_name) VALUES (?, ?) ON CONFLICT(char_ck) DO NOTHING;',
+            rows
+        )
+        if not result.success:
+            raise RuntimeError('Database dim_character seeding failed')
+        
+        # ft_inventory seeding
+        raw_rows = load_csv('sql/dev/seed_ft_inventory.csv')
+        rows = [(
+            r['inv_trans_ck'],
+            r['inv_ck'],
+            r['char_ck'],
+            r['val']
+        ) for r in raw_rows]
+        result = self.executemany(
+            'INSERT INTO ft_inventory VALUES (?, ?, ?, ?) ON CONFLICT(inv_trans_ck) DO NOTHING;',
+            rows
+        )
+        if not result.success:
+            raise RuntimeError('Database ft_inventory seeding failed')
