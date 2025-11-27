@@ -1,5 +1,5 @@
 import logging
-
+from models import APIResponse
 
 #################################################################
 # Base API Class inhereted by all other classes
@@ -11,7 +11,10 @@ class BaseAPI:
         pass
 
     def _pull_into_json(self, data, col_names):
-        return [dict(zip(col_names, row)) for row in data]
+        return [
+            {col: self._normalize(val) for col, val in zip(col_names, row)}
+            for row in data
+        ]
     
     def _normalize(self, value):
         if isinstance(value, str) and value.strip() == "":
@@ -28,3 +31,4 @@ class BaseAPI:
     def remove_session(self, key):
         logging.info(f'Removed `{key}` from session')
         return self.session.pop(key, False)
+    
