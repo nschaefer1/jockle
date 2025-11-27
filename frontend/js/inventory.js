@@ -18,7 +18,7 @@ async function init(api) {
         return
     }
 
-    console.log('API call successful')
+    console.log('API call successful');
     let container = document.getElementById('inventory-area');
     response.data.forEach(item => {
 
@@ -31,10 +31,23 @@ async function init(api) {
 
         // Creating img element
         const img = document.createElement('img');
-        img.src = `../assets/icons/${item.icon_path}`;
+        img.src = `../assets/icons/${item.icon_path ?? "uncertainty.png"}`;
         img.className = 'card-icon';
         // Add img to container
         div.appendChild(img);
+
+        // Creating the count variable at the bottomr ight
+        const num = document.createElement('div');
+        if (item.item_count >= 1000000) {
+            num.textContent = (item.item_count/1000000).toFixed(1) + "M";
+        } else if (item.item_count >= 1000) {
+            num.textContent = (item.item_count/1000).toFixed(1) + "K";
+        } else {
+            num.textContent = item.item_count;
+        }
+        num.className = 'card-num';
+        // Add the number to the div
+        div.appendChild(num);
 
         // HOVER Events
         div.addEventListener('mouseenter', () => {
