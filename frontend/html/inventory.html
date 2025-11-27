@@ -10,15 +10,23 @@
     <h1>Inventory</h1>
 
     <hr>
-    
-    <div class="raised-container">
-        <div class="card-container">
-            <div class="card" onclick="go('characters')">
-                %
+
+    <div class="side-by-side">
+
+        <div class="raised-container">
+            <div class="card-container" id="inventory-area">
+
             </div>
         </div>
+
+        <div class="raised-container details hidden">
+            
+        </div>
+        
     </div>
 
+    <div id="tooltip"></div>
+        
     <script src="../js/router.js"></script>
     <script src="../js/inventory.js"></script>
 

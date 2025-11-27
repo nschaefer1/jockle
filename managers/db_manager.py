@@ -19,7 +19,7 @@ class DBManager:
             raise RuntimeError('Database fact initialization failed')
         # TODO add index creation calls for foriegn keys
             
-
+        self._icon_seeding() # Run icon seeding at the start
         # Only run seeding if we're in dev mode
         if os.getenv('DEBUG') == 'true':
             self._dev_seeding()
@@ -109,12 +109,30 @@ class DBManager:
                 if os.getenv("DEBUG") == 'true':
                     raise
                 return DBReturn(success=False)
+            
+    def _icon_seeding(self):
+        '''
+        This seeds the icon table specifically to map the icon paths to the dataset
+        '''
+        # dim_icon seeding
+        raw_rows = load_csv('sql/seed_dim_icon.csv')
+        rows = [(
+            r['icon_ck'],
+            r['icon_path']
+        ) for r in raw_rows]
+        result = self.executemany(
+            'INSERT INTO dim_icon VALUES (?, ?) ON CONFLICT(icon_ck) DO NOTHING;',
+            rows
+        )
+        if not result.success:
+            raise RuntimeError('Database dim_icon seeding failed')
 
     def _dev_seeding(self):
         '''
         Seeding function for development mode
         This should not be ran outside of development
         '''
+       
 
         # dim_inventory seeding
         raw_rows = load_csv('sql/dev/seed_dim_inventory.csv')
@@ -125,10 +143,11 @@ class DBManager:
             r['child_ind'],
             r['inv_type'],
             r['equip_location'],
-            r['rarity']
+            r['rarity'],
+            r['icon_ck']
         ) for r in raw_rows]
         result = self.executemany(
-            'INSERT INTO dim_inventory VALUES (?,?,?,?,?,?,?) ON CONFLICT(inv_ck) DO NOTHING;',
+            'INSERT INTO dim_inventory VALUES (?,?,?,?,?,?,?,?) ON CONFLICT(inv_ck) DO NOTHING;',
             rows
         )
         if not result.success:

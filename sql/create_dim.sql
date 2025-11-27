@@ -1,4 +1,8 @@
 
+create table if not exists dim_icon (
+    icon_ck integer primary key not null unique,
+    icon_path text
+);
 
 create table if not exists dim_inventory (
     inv_ck integer primary key not null unique,
@@ -7,7 +11,10 @@ create table if not exists dim_inventory (
     child_ind integer default 0,
     inv_type text,
     equip_location text,
-    rarity text
+    rarity text,
+    icon_ck integer default 1,
+    
+    foreign key (icon_ck) references dim_icon(icon_ck)
 );
 
 create table if not exists dim_character (
