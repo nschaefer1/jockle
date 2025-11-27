@@ -93,3 +93,5 @@ pyinstaller --noconfirm --onefile --windowed --name Jockle main.py
 - The `assets/`, `frontend/`, and `sql/` folders may need to be included explicitly in the build. You can configure this in a `.spec` file if required.
 - If you're using local SQLite (`database.db`), ensure the app knows where to create or access this file on first run.
 - For more advanced distribution (e.g., installers), consider using tools like **Inno Setup** or **NSIS** once the `.exe` is stable.
+- Icons are grabbed from https://game-icons.net/ 
+  - **No copyright infringement intended, will remove upon request.**
