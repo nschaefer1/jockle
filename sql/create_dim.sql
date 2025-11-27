@@ -9,3 +9,11 @@ create table if not exists dim_inventory (
     equip_location text,
     rarity text
 );
+
+create table if not exists dim_character (
+    char_ck integer primary key not null unique,
+    char_name text not null,
+    created_at text default CURRENT_TIMESTAMP,
+    updated_at text default CURRENT_TIMESTAMP
+);
+
