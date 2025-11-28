@@ -1,0 +1,67 @@
+﻿inv_ck,inv_name,inv_desc,child_ind,inv_type,equip_location,rarity,icon_ck
+1,Whispering Amulet,"This silver amulet hums faintly when danger approaches. While wearing it, you can cast the Message cantrip at will. Additionally, once per long rest, you can whisper a secret to the amulet, and it will relay it to a creature you name within 1 mile (who must succeed on a DC 13 Wisdom saving throw or hear the message clearly).",0,Wonderous Item,Neck,Uncommon,2
+2,Frostbite Dagger,"This icy blade deals an extra 1d6 cold damage on a hit (total 1d4 + 1d6 piercing + 1d6 cold). If it reduces a creature to 0 hit points, the target is frozen solid for 1 minute or until it takes fire damage. Requires attunement by a creature with cold resistance or immunity.",0,Weapon,Dagger,Rare,3
+3,Cloak of the Night Fox,"This dark fur cloak grants advantage on Dexterity (Stealth) checks in dim light or darkness. Once per short rest, you can use your action to become invisible until the start of your next turn or until you attack or cast a spell.",0,Wonderous Item,Cloak,Uncommon,4
+4,Orb of Echoing Laugher,"A crystal orb that stores laughter. As an action, you can crush it to release gales of hilarious echoes in a 30-foot radius (DC 15 Wisdom save or be incapacitated for 1 minute from uncontrollable laughter, repeating the save at end of each turn). The orb reforms after 24 hours. 3 charges, regains 1d3 at dawn.",0,Wounderous Item,,Rare,5
+5,Boots of the Bounding Hare,These soft leather boots allow you to jump 10 feet horizontally or vertically without a running start. Your jump distance is doubled if you have a running start.,0,Wounderous Item,Boots,Common,6
+6,Ring of Minor Mending,"This plain iron ring repairs small breaks in objects. You can cast Mending at will on nonmagical objects weighing up to 10 pounds. Once per day, it can mend a magical item (but not restore charges or attunement).",0,,Ring,Common,7
+7,Staff of Thorned Vines,"Requires attunement by a druid or ranger. This gnarled wooden staff has 10 charges. Spells: Entangle (2 charges), Spike Growth (4 charges), Plant Growth (5 charges). Regains 1d6+4 charges daily at dawn. If you expend the last charge, roll a d20: on a 1, the staff withers into useless vines.",0,,Staff,Very Rare,8
+8,Amulet of the Patient Hunter,"While wearing this bone-carved amulet, you gain proficiency in Survival checks if you don't already have it. Once per long rest, when you hit with a ranged weapon attack, you can force the target to make a DC 13 Wisdom saving throw or be frightened of you until the end of your next turn.",0,Wonderous Item,Neck,Uncommon,2
+9,Iron Longsword,Sturdy iron blade favored by militia,0,Weapon,Hand,Common,3
+10,Oak Shortbow,Simple bow carved from seasoned oak,0,Weapon,Hand,Common,2
+11,Steel Shield,Rounded shield reinforced with steel bands,0,Armor,Hand,Uncommon,4
+12,Traveler's Cloak,Warm cloak with hidden interior pockets,0,Clothing,Back,Common,5
+13,Healing Draught,Red herbal tonic that accelerates mending,0,Consumable,None,Common,1
+14,Scroll of Ember Spark,Scroll releasing a minor flame burst,0,Consumable,None,Common,7
+15,Boots of Quick Stride,Light boots giving subtle agility,0,Clothing,Feet,Uncommon,4
+16,Elven Dagger,Gracefully balanced dagger of elven craft,0,Weapon,Hand,Uncommon,2
+17,Runed Leather Armor,Light armor etched with protective runes,0,Armor,Torso,Uncommon,6
+18,Dwarven Warhammer,Heavy hammer built for crushing stone or bone,0,Weapon,Hand,Rare,8
+19,Belt of Vitality,Belt increasing stamina slightly,0,Clothing,Waist,Uncommon,1
+20,Amulet of Dawn,Amulet radiating faint warm light,0,Trinket,Neck,Uncommon,4
+21,Wand of Frostbite,Releases a chilling icy pulse,0,Weapon,Hand,Uncommon,7
+22,Gloves of Sure Grip,Leather gloves enhancing grasp strength,0,Clothing,Hands,Common,5
+23,Herbalist Pouch,Small pouch with mixed reagents,0,Utility,None,Common,3
+24,Ring of Minor Warding,Ring offering faint magical shielding,0,Trinket,Finger,Uncommon,6
+25,Tonic of Clarity,Brew that sharpens the mind briefly,0,Consumable,None,Common,2
+26,Chain Shirt,Interlinked metal shirt offering solid defense,0,Armor,Torso,Common,4
+27,Crude Spear,Simple hunting spear with stone tip,0,Weapon,Hand,Common,1
+28,Arcane Focus Crystal,Crystal that channels spell energy,0,Utility,Hand,Uncommon,7
+29,Satchel of Mapping,Satchel containing magically shifting maps,0,Utility,None,Rare,8
+30,Silvered Axe,Weapon effective against certain creatures,0,Weapon,Hand,Uncommon,5
+31,Torchstone,Compact stone emitting steady light,0,Utility,None,Common,3
+32,Potion of Resistance,Tonic granting mild resistance to elements,0,Consumable,None,Uncommon,6
+33,Holy Icon of Aroden,Symbol bearing faint divine resonance,0,Trinket,Neck,Uncommon,2
+34,Sturdy Riding Saddle,Well-crafted saddle for mounted travel,0,Utility,None,Common,4
+35,Thieves' Toolkit,Essential picks and wires for locks,0,Utility,None,Common,5
+36,Bracers of Striking,Bracers enhancing unarmed blows,0,Armor,Arms,Uncommon,8
+37,Ring of Whisperwind,Allows soft messages to travel farther,0,Trinket,Finger,Rare,7
+38,Enchanted Paint Vial,Paint that glows when danger is near,0,Utility,None,Uncommon,6
+39,Firebomb Flask,Explosive flask igniting on impact,0,Consumable,None,Uncommon,3
+40,Padded Armor,Light protective armor of layered cloth,0,Armor,Torso,Common,2
+41,Ironwood Staff,Toughened staff made from magically treated wood,0,Weapon,Hand,Common,1
+42,Elixir of Stamina,Boosts endurance for a short period,0,Consumable,None,Common,5
+43,Mask of Shadowveil,Mask helping blend into darkness,0,Clothing,Head,Uncommon,8
+44,Crystal Lens,Lens improving distant sight slightly,0,Utility,None,Common,4
+45,Hunter’s Trap,Mechanical trap for small beasts,0,Utility,None,Common,6
+46,Radiant Pendant,Pendant glowing with soft healing light,0,Trinket,Neck,Rare,7
+47,Iron Gauntlets,Heavy gauntlets for armored combat,0,Armor,Hands,Common,3
+48,Zephyr Ring,Lightweight ring granting airy movements,0,Trinket,Finger,Uncommon,1
+49,Alchemist’s Fire,Flask that burns intensely on contact,0,Consumable,None,Uncommon,8
+50,Featherlight Cloak,Cloak allowing gentle gliding from heights,0,Clothing,Back,Rare,6
+51,Runestone of Insight,Stone granting flashes of brief insight,0,Utility,None,Rare,7
+52,Herald’s Horn,Horn amplifying sound with magical resonance,0,Utility,None,Uncommon,4
+53,Rune-Etched Greataxe,Massive axe bearing battle-runes,0,Weapon,Hand,Rare,5
+54,Shield of Barkskin,Wooden shield hard as iron,0,Armor,Hand,Uncommon,2
+55,Glowing Ink Capsule,Ink visible only under moonlight,0,Utility,None,Common,1
+56,Studded Leather Armor,Leather reinforced with metal studs,0,Armor,Torso,Common,3
+57,Druidic Charm,Nature-blessed charm offering mild protection,0,Trinket,Neck,Uncommon,6
+58,Arcane Rune Banner,Banner that bolsters allies slightly,0,Utility,None,Rare,8
+59,Iron Pike,A long polearm suited for formation fighting,0,Weapon,Hand,Common,2
+60,Elixir of Boldness,Potion instilling temporary bravery,0,Consumable,None,Common,3
+61,Tome of Lost Paths,A thick book containing obscure lore,0,Utility,None,Rare,7
+62,Shadowglass Dagger,Dark blade that absorbs faint light,0,Weapon,Hand,Rare,6
+63,Healer’s Bandage Kit,Set of treated bandages and salves,0,Utility,None,Common,1
+64,Runic Wristband,Wristband that steadies magical focus,0,Trinket,Arms,Uncommon,4
+65,Gyro-Compass,Small device always pointing north,0,Utility,None,Common,5
+66,Elvenleaf Jerkin,Jerkin woven from enchanted leaves,0,Armor,Torso,Uncommon,8

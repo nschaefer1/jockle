@@ -115,7 +115,7 @@ class DBManager:
         This seeds the icon table specifically to map the icon paths to the dataset
         '''
         # dim_icon seeding
-        raw_rows = load_csv('sql/seed_dim_icon.csv')
+        raw_rows = load_csv('sql/csv_seeds/seed_dim_icon.csv')
         rows = [(
             r['icon_ck'],
             r['icon_path']
@@ -135,7 +135,7 @@ class DBManager:
        
 
         # dim_inventory seeding
-        raw_rows = load_csv('sql/dev/seed_dim_inventory.csv')
+        raw_rows = load_csv('sql/csv_seeds/seed_dim_inventory.csv')
         rows = [(
             r['inv_ck'],
             r['inv_name'],
@@ -154,7 +154,7 @@ class DBManager:
             raise RuntimeError('Database dim_inventory seeding failed')
 
         # dim_character seeding
-        raw_rows = load_csv('sql/dev/seed_dim_character.csv')
+        raw_rows = load_csv('sql/csv_seeds/seed_dim_character.csv')
         rows = [(
             r['char_ck'],
             r['char_name']
@@ -167,7 +167,7 @@ class DBManager:
             raise RuntimeError('Database dim_character seeding failed')
         
         # ft_inventory seeding
-        raw_rows = load_csv('sql/dev/seed_ft_inventory.csv')
+        raw_rows = load_csv('sql/csv_seeds/seed_ft_inventory.csv')
         rows = [(
             r['inv_trans_ck'],
             r['inv_ck'],
