@@ -23,7 +23,7 @@ h1 {
 
 hr {
     border: none;
-    border-top: 1px solid #1f1b2e; /* or your accent color */
+    border-top: 1px solid #1f1b2e;
     margin: 0px 0px 20px 0px;
     opacity: 0.4;
 }
@@ -33,6 +33,15 @@ hr {
     flex: 1;
     gap: 10px;
     flex-direction: row;
+}
+
+.top-bar {
+    display: flex;
+    flex: 1;
+    gap: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /* Container segments */
@@ -128,4 +137,45 @@ hr {
     color:#f5f5fa; 
     border-radius: 8px;
     padding: 1px 5px;
+}
+
+/* Search Bars */
+
+.search-container {
+    position: relative;
+    margin: 0 10px 0 0;
+}
+
+#inventory-search {
+    width: 100%;
+    padding: 8px 30px 8px 12px; /* extra right padding for the X */
+    font-size: 14px;
+    border-radius: 8px;
+    border: 2px solid #1f1b2e;
+    background: #ffffff;
+    color: #1f1b2e;
+    box-sizing: border-box;
+
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#inventory-search:focus {
+    outline: none;
+    border-color: #9d00ff;
+    box-shadow: 0 0 5px rgba(157, 0, 255, 0.3);
+}
+
+.clear-btn {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 14px;
+    opacity: 0.6;
+    cursor: pointer;
+    pointer-events: auto;
+    padding: 0;
+    line-height: 1;
 }

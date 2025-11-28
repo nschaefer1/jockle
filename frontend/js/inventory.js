@@ -9,7 +9,7 @@ async function init(api) {
     // TODO remove this line once we have character section
     await api.set_session('sel_char_ck', 1) // SELECTING VEYRA
 
-    // load the inventory in the UI
+    // POPULATE THE INVENTORY
     let sel_char_ck = await api.get_session('sel_char_ck')
     let response = await api.getInventory(sel_char_ck)
     if (!response.success) {
@@ -28,6 +28,7 @@ async function init(api) {
         // Attributes of the div element
         div.className = 'card';
         div.onclick = () => handleItemClick(item.inv_ck);
+        div.setAttribute('data-name', item.inv_name)
 
         // Creating img element
         const img = document.createElement('img');
@@ -59,8 +60,16 @@ async function init(api) {
             tooltip.style.opacity = "1";
         });
         div.addEventListener('mousemove', (e) => {
-            tooltip.style.left = (e.pageX + 12) + 'px';
-            tooltip.style.top = (e.pageY + 12) + 'px';
+            const tooltipWidth = tooltip.offsetWidth;
+            const margin = 12;
+            
+            let left = e.pageX + margin;
+
+            if (left + tooltipWidth > window.innerWidth) {
+                left = e.pageX - tooltipWidth - margin;
+            }
+            tooltip.style.left = left + 'px';
+            tooltip.style.top = (e.pageY + margin) + 'px';
         });
         div.addEventListener('mouseleave', () => {
             tooltip.style.visibility = "hidden";
@@ -72,9 +81,26 @@ async function init(api) {
 
     });
 
+    // ADD SEARCH BAR EVENT LISTENER
+    document.getElementById('inventory-search').addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase();
+
+        document.querySelectorAll('.card').forEach(card => {
+            const name = card.getAttribute('data-name')?.toLowerCase() ?? "";
+            card.style.display = name.includes(term) ? 'flex' : 'none';
+        });
+    });
+
+    // CLEAR BTN EVENT LISTENER
+    const search_input = document.getElementById('inventory-search');
+    const clearBtn = document.getElementById('clear-search')
+    clearBtn.addEventListener('click', () => {
+        search_input.value = "";
+        search_input.dispatchEvent(new Event('input')); // reruns the filter logic
+    });
 }
 
 window.addEventListener('pywebviewready', () => {
     let api = window.pywebview.api; // alias the API
     init(api);
-})
+});
