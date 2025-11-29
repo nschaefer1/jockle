@@ -54,6 +54,12 @@ async function init(api) {
         // CLICK events
         div.addEventListener('click', () => {
             console.log('Clicked item: ', item.inv_ck);
+            // Remove any selected element
+            document.querySelectorAll('.card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            // Highlight the item in the inventory that was clicked
+            div.classList.add('selected');
             // Show the details container
             const details_container = document.getElementById('details-area');
             details_container.classList.remove('hidden');
