@@ -1,6 +1,7 @@
 
-async function handleItemClick(inv_ck) {
-    console.log('Clicked item: ', inv_ck);
+async function handleItemClick(inv_ck, inv_name, inv_desc) {
+    
+
 }
 
 async function init(api) {
@@ -27,12 +28,12 @@ async function init(api) {
 
         // Attributes of the div element
         div.className = 'card';
-        div.onclick = () => handleItemClick(item.inv_ck);
         div.setAttribute('data-name', item.inv_name)
 
         // Creating img element
         const img = document.createElement('img');
-        img.src = `../assets/icons/${item.icon_path ?? "uncertainty.png"}`;
+        let img_path = `../assets/icons/${item.icon_path ?? "uncertainty.png"}`;
+        img.src = img_path;
         img.className = 'card-icon';
         // Add img to container
         div.appendChild(img);
@@ -49,6 +50,20 @@ async function init(api) {
         num.className = 'card-num';
         // Add the number to the div
         div.appendChild(num);
+
+        // CLICK events
+        div.addEventListener('click', () => {
+            console.log('Clicked item: ', item.inv_ck);
+            // Show the details container
+            const details_container = document.getElementById('details-area');
+            details_container.classList.remove('hidden');
+            // Clear HTML content
+            details_container.innerHTML = ``;
+            details_container.innerHTML = `
+                <h2>${item.inv_name}</h2>
+                <p>${item.inv_desc}</p>
+            `;
+        });
 
         // HOVER Events
         div.addEventListener('mouseenter', () => {
