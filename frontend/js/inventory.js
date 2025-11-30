@@ -82,15 +82,21 @@ async function init(api) {
         });
         div.addEventListener('mousemove', (e) => {
             const tooltipWidth = tooltip.offsetWidth;
+            const tooltipHeight = tooltip.offsetHeight;
             const margin = 12;
             
             let left = e.pageX + margin;
+            let top = e.pageY + margin;
 
+            // Check if the tooltip would go "offpage" and recenter
             if (left + tooltipWidth > window.innerWidth) {
                 left = e.pageX - tooltipWidth - margin;
             }
             tooltip.style.left = left + 'px';
-            tooltip.style.top = (e.pageY + margin) + 'px';
+            if (top + tooltipHeight > window.innerHeight) {
+                top = e.pageY - tooltipHeight - margin;
+            }
+            tooltip.style.top = top + 'px';
         });
         div.addEventListener('mouseleave', () => {
             tooltip.style.visibility = "hidden";
