@@ -8,34 +8,42 @@
 </head>
 <body>
 
+    <div class="page-wrapper">
 
-    <div class="top-bar" style="flex: 0;">
+        <div class="top-bar" style="flex: 0;">
         
-        <h1>Inventory</h1>
-        <div class="search-container">
-            <input type="text" id="inventory-search" placeholder="Search...">
-            <button class="clear-btn" id="clear-search">X</button>
+            <h1>Inventory</h1>
+            <div class="search-container">
+                <input type="text" id="inventory-search" placeholder="Search...">
+                <button class="clear-btn" id="clear-search">X</button>
+            </div>
+
         </div>
 
-    </div>
+        <hr>
 
-    <hr>
+        <div class="side-by-side">
 
-    <div class="side-by-side">
+            <div class="raised-container">
 
-        <div class="raised-container">
-            <div class="card-container" id="inventory-area">
+                <div class="card-container" id="inventory-area">
+                    <div class="card" style="background-color:#9d00ff33" id="add-new-card">
+                        <img src="../assets/icons/add.png" class="card-icon">
+                    </div>
+                </div>
+            </div>
+
+            <div class="raised-container details" id="details-area">
                 
             </div>
-        </div>
-
-        <div class="raised-container details" id="details-area">
             
         </div>
-        
+
+        <div id="tooltip"></div>
+
     </div>
 
-    <div id="tooltip"></div>
+    
         
     <script src="../js/router.js"></script>
     <script src="../js/inventory.js"></script>

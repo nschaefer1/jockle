@@ -90,7 +90,7 @@ hr {
     padding: 6px 10px;
     border-radius: 6px;
     font-size: 12px;
-    width: 250px;
+    max-width: 250px;
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.15s ease;

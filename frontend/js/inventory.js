@@ -1,14 +1,52 @@
 
-async function handleItemClick(inv_ck, inv_name, inv_desc) {
-    
+async function addTooltipListeners(ele, inv_name, inv_desc) {
+    // HOVER Events
+    ele.addEventListener('mouseenter', () => {
+        tooltip.innerHTML = `
+            <strong>${inv_name}</strong><br>
+            <p>${inv_desc}</p>
+        `;
+        tooltip.style.visibility = "visible";
+        tooltip.style.opacity = "1";
+    });
+    ele.addEventListener('mousemove', (e) => {
+        const tooltipWidth = tooltip.offsetWidth;
+        const tooltipHeight = tooltip.offsetHeight;
+        const margin = 12;
+        
+        let left = e.pageX + margin;
+        let top = e.pageY + margin;
 
+        // Check if the tooltip would go "offpage" and recenter
+        if (left + tooltipWidth > window.innerWidth) {
+            left = e.pageX - tooltipWidth - margin;
+        }
+        tooltip.style.left = left + 'px';
+        if (top + tooltipHeight > window.innerHeight) {
+            top = e.pageY - tooltipHeight - margin;
+        }
+        tooltip.style.top = top + 'px';
+    });
+    ele.addEventListener('mouseleave', () => {
+        tooltip.style.visibility = "hidden";
+        tooltip.style.opacity = "0";
+    });
 }
+
+
 
 async function init(api) {
     
     // SELECT A DUMMY CHARACTER
     // TODO remove this line once we have character section
     await api.set_session('sel_char_ck', 1) // SELECTING VEYRA
+
+    // ADD THE TOOLTIP TO THE ADD/NEW ITEM CONTAINER
+    addTooltipListeners(
+        document.getElementById('add-new-card'),
+        'New Item',
+        ''
+    );
 
     // POPULATE THE INVENTORY
     let sel_char_ck = await api.get_session('sel_char_ck')
@@ -72,36 +110,7 @@ async function init(api) {
         });
 
         // HOVER Events
-        div.addEventListener('mouseenter', () => {
-            tooltip.innerHTML = `
-                <strong>${item.inv_name}</strong><br>
-                <p>${item.inv_desc}</p>
-            `;
-            tooltip.style.visibility = "visible";
-            tooltip.style.opacity = "1";
-        });
-        div.addEventListener('mousemove', (e) => {
-            const tooltipWidth = tooltip.offsetWidth;
-            const tooltipHeight = tooltip.offsetHeight;
-            const margin = 12;
-            
-            let left = e.pageX + margin;
-            let top = e.pageY + margin;
-
-            // Check if the tooltip would go "offpage" and recenter
-            if (left + tooltipWidth > window.innerWidth) {
-                left = e.pageX - tooltipWidth - margin;
-            }
-            tooltip.style.left = left + 'px';
-            if (top + tooltipHeight > window.innerHeight) {
-                top = e.pageY - tooltipHeight - margin;
-            }
-            tooltip.style.top = top + 'px';
-        });
-        div.addEventListener('mouseleave', () => {
-            tooltip.style.visibility = "hidden";
-            tooltip.style.opacity = "0";
-        });
+        addTooltipListeners (div, item.inv_name, item.inv_desc);
 
         // Add card to container
         container.appendChild(div);
