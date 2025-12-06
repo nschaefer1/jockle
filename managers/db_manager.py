@@ -3,7 +3,7 @@ import logging
 import os
 
 from models import DBReturn
-from utils import read_basic_file, load_csv
+from utils import read_basic_file, load_csv, file_walker
 
 class DBManager:
     
@@ -114,15 +114,14 @@ class DBManager:
         '''
         This seeds the icon table specifically to map the icon paths to the dataset
         '''
-        # dim_icon seeding
-        raw_rows = load_csv('sql/csv_seeds/seed_dim_icon.csv')
-        rows = [(
-            r['icon_ck'],
-            r['icon_path']
-        ) for r in raw_rows]
+        # Do a file walking of the icon path
+        paths = file_walker('frontend/assets/icons','.png', 'relative')
+        # Create list of tuples for sqlite to manage
+        paths = [(p,) for p in paths]
+        # Insert the paths into the database, on conflict of the path, do nothing
         result = self.executemany(
-            'INSERT INTO dim_icon VALUES (?, ?) ON CONFLICT(icon_ck) DO NOTHING;',
-            rows
+            'INSERT INTO dim_icon (icon_path) VALUES (?) ON CONFLICT(icon_path) DO NOTHING;',
+            paths
         )
         if not result.success:
             raise RuntimeError('Database dim_icon seeding failed')

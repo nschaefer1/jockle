@@ -1,7 +1,7 @@
 
 create table if not exists dim_icon (
     icon_ck integer primary key not null unique,
-    icon_path text
+    icon_path text not null unique
 );
 
 create table if not exists dim_inventory (
