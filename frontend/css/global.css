@@ -1,64 +1,77 @@
+/* === Base Layout === */
 
 html, body {
     height: 100%;
     margin: 0;
+    overflow: hidden;
 }
 
 body {
     display: flex;
     flex-direction: column;
-    padding: 20px;
     box-sizing: border-box;
     background-color: #f5f5fa;
     color: #1f1b2e;
     font-size: 12px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.page-wrapper {
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+/* === Headings & Separators === */
 
 h1 {
     font-size: 36px;
-    padding: 0px;
-    font-family: 'Book Antiqua';
 }
 
 hr {
     border: none;
     border-top: 1px solid #1f1b2e;
-    margin: 0px 0px 20px 0px;
+    margin: 0 0 20px 0;
     opacity: 0.4;
+}
+
+/* === Layout Regions === */
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .side-by-side {
     display: flex;
     flex: 1;
     gap: 10px;
-    flex-direction: row;
+    min-height: 0;
 }
 
-.top-bar {
-    display: flex;
-    flex: 1;
-    gap: 10px;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
+/* === Containers === */
 
-/* Container segments */
 .raised-container {
     flex: 1;
     background-color: #FAFAFD;
-    padding: 10px; 
+    padding: 10px;
     border-style: outset;
     border-radius: 16px;
+    overflow-y: auto;
+    min-height: 0;
 }
+
 .raised-container.details {
     max-width: 400px;
     opacity: 1;
-    max-height: 1000px;
-    overflow: hidden;
+    overflow-y: auto;
     transition: opacity 0.3s ease, max-height 0.3s ease;
+    min-height: 0;
 }
+
 .raised-container.details.hidden {
     opacity: 0;
     max-height: 0;
@@ -68,36 +81,35 @@ hr {
     border-width: 0;
 }
 
+/* === Tooltip === */
+
 #tooltip {
-    position: fixed; 
+    position: fixed;
     background: #1f1b2e;
-    color:white;
+    color: white;
     padding: 6px 10px;
     border-radius: 6px;
     font-size: 12px;
     width: 250px;
-
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.15s ease;
-
     pointer-events: none;
     z-index: 9999;
 }
 
-/* Inventory Items */
+/* === Inventory Grid === */
 
 .card-container {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    align-content: flex-start;
-    align-items: flex-start;
     gap: 10px;
     max-height: 100%;
     overflow: auto;
+    align-content: flex-start;
 }
+
+/* === Item Cards === */
 
 .card {
     display: flex;
@@ -109,9 +121,7 @@ hr {
     width: 50px;
     height: 50px;
     border-radius: 8px;
-    border-color: #1f1b2e;
-    border-style: solid;
-    border-width: 2px;
+    border: 2px solid #1f1b2e;
 }
 
 .card.selected {
@@ -122,8 +132,6 @@ hr {
 .card:hover {
     cursor: pointer;
     border-color: #9d00ff;
-    border-style: solid;
-    border-width: 2px;
 }
 
 .card-icon {
@@ -138,29 +146,28 @@ hr {
     margin: 2px;
     font-size: 12px;
     font-weight: bold;
-    background:rgba(31, 27, 46, 0.9);
-    color:#f5f5fa; 
+    background: rgba(31, 27, 46, 0.9);
+    color: #f5f5fa;
     border-radius: 8px;
     padding: 1px 5px;
 }
 
-/* Search Bars */
+/* === Search Bar === */
 
 .search-container {
     position: relative;
-    margin: 0 10px 0 0;
+    margin-right: 10px;
 }
 
 #inventory-search {
     width: 100%;
-    padding: 8px 30px 8px 12px; /* extra right padding for the X */
+    padding: 8px 30px 8px 12px;
     font-size: 14px;
     border-radius: 8px;
     border: 2px solid #1f1b2e;
     background: #ffffff;
     color: #1f1b2e;
     box-sizing: border-box;
-
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -180,7 +187,6 @@ hr {
     font-size: 14px;
     opacity: 0.6;
     cursor: pointer;
-    pointer-events: auto;
     padding: 0;
     line-height: 1;
 }
