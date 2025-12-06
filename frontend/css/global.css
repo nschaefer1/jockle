@@ -37,6 +37,18 @@ hr {
     opacity: 0.4;
 }
 
+.hint {
+    position: fixed;
+    bottom: -7.5px;
+    left: 5px;
+    color: #888;
+    font-size: 12px;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    opacity: 0.7;
+}
+
 /* === Layout Regions === */
 
 .top-bar {
