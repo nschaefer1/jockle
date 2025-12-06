@@ -44,7 +44,7 @@ async function init(api) {
     // ADD THE TOOLTIP TO THE ADD/NEW ITEM CONTAINER
     addTooltipListeners(
         document.getElementById('add-new-card'),
-        'New Item',
+        'Add Item',
         ''
     );
 
