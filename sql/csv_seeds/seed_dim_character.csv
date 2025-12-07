@@ -1,5 +1,5 @@
-﻿char_ck,char_name
-1,Veyra Thornecloak
-2,Torvald Iron-thewed
-3,Liora Veyne
-4,Brother Caldor Brightwick
+﻿char_ck,char_name,str_score,dex_score,con_score,int_score,wis_score,cha_score,size_cat
+1,Veyra Thornecloak,14,13,16,12,11,15,Small
+2,Torvald Iron-thewed,12,16,14,11,13,10,Medium
+3,Liora Veyne,15,12,13,14,9,16,Small
+4,Brother Caldor Brightwick,10,14,15,12,16,11,Medium

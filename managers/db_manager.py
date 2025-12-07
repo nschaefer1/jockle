@@ -143,10 +143,11 @@ class DBManager:
             r['inv_type'],
             r['equip_location'],
             r['rarity'],
-            r['icon_ck']
+            r['icon_path'],
+            r['weight_lbs']
         ) for r in raw_rows]
         result = self.executemany(
-            'INSERT INTO dim_inventory VALUES (?,?,?,?,?,?,?,?) ON CONFLICT(inv_ck) DO NOTHING;',
+            'INSERT INTO dim_inventory VALUES (?,?,?,?,?,?,?,?,?) ON CONFLICT(inv_ck) DO NOTHING;',
             rows
         )
         if not result.success:
@@ -156,10 +157,17 @@ class DBManager:
         raw_rows = load_csv('sql/csv_seeds/seed_dim_character.csv')
         rows = [(
             r['char_ck'],
-            r['char_name']
+            r['char_name'],
+            r['str_score'],
+            r['dex_score'],
+            r['con_score'],
+            r['int_score'],
+            r['wis_score'],
+            r['cha_score'],
+            r['size_cat']
         ) for r in raw_rows]
         result = self.executemany(
-            'INSERT INTO dim_character (char_ck, char_name) VALUES (?, ?) ON CONFLICT(char_ck) DO NOTHING;',
+            'INSERT INTO dim_character (char_ck, char_name, str_score, dex_score, con_score, int_score, wis_score, cha_score, size_cat) VALUES (?,?,?,?,?,?,?,?,?) ON CONFLICT(char_ck) DO NOTHING;',
             rows
         )
         if not result.success:
