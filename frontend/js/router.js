@@ -4,8 +4,14 @@
 
 async function go(page) {
     const map = {
+        
+        // Inventory Management
         inventory:   'html/inventory.html',
+        new_inventory: 'html/inventory_sub/new_inventory.html',
+
+        // Character Management
         characters:  'html/characters.html'
+        
         // Add HTML here
     };
 

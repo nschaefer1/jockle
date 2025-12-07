@@ -42,11 +42,11 @@ async function init(api) {
     await api.set_session('sel_char_ck', 1) // SELECTING VEYRA
 
     // ADD THE TOOLTIP TO THE ADD/NEW ITEM CONTAINER
-    addTooltipListeners(
-        document.getElementById('add-new-card'),
-        'Add Item',
-        ''
-    );
+    const add_new_card = document.getElementById('add-new-card');
+    addTooltipListeners(add_new_card,'Add Item','');
+    add_new_card.addEventListener('click', () => {
+        go('new_inventory');
+    });
 
     // POPULATE THE INVENTORY
     let sel_char_ck = await api.get_session('sel_char_ck')
@@ -122,6 +122,7 @@ async function init(api) {
         const term = e.target.value.toLowerCase();
 
         document.querySelectorAll('.card').forEach(card => {
+            card.classList.remove('selected');
             const name = card.getAttribute('data-name')?.toLowerCase() ?? "";
             card.style.display = name.includes(term) ? 'flex' : 'none';
         });
