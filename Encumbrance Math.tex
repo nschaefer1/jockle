@@ -1,0 +1,164 @@
+\documentclass{article}
+
+% Math support
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Better page width
+\usepackage[margin=1in]{geometry}
+
+\begin{document}
+
+\section*{Full-System Carrying Capacity Function (Medium Size)}
+
+Let $S$ be the Strength score (integer $\ge 1$).
+
+The carrying capacity functions are:
+
+\[
+(\text{Light}(S),\ \text{Medium}(S),\ \text{Heavy}(S))
+\]
+
+\subsection*{Piece 1 — Strength less than or equal to 9 (table lookup)}
+
+\[
+(\text{Light}(S),\ \text{Medium}(S),\ \text{Heavy}(S)) = T(S)
+\quad \text{for } S \le 9
+\]
+
+The lookup table:
+
+\[
+T(S)
+=
+\begin{array}{c|ccc}
+S & \text{Light} & \text{Medium} & \text{Heavy} \\
+\hline
+1 & 3  & 6  & 10 \\
+2 & 6  & 13 & 20 \\
+3 & 10 & 20 & 30 \\
+4 & 13 & 26 & 40 \\
+5 & 16 & 33 & 50 \\
+6 & 20 & 40 & 60 \\
+7 & 23 & 46 & 70 \\
+8 & 26 & 53 & 80 \\
+9 & 30 & 60 & 90 \\
+\end{array}
+\]
+
+\subsection*{Piece 2 — Strength greater than or equqal to 10 (formula)}
+
+\[
+d = S - 10, \qquad
+k = \left\lfloor \frac{d}{5} \right\rfloor, \qquad
+r = d \bmod 5
+\]
+
+\[
+m(r) =
+\begin{cases}
+1.00 & r = 0 \\
+1.17 & r = 1 \\
+1.33 & r = 2 \\
+1.50 & r = 3 \\
+1.75 & r = 4
+\end{cases}
+\]
+
+\[
+\text{Heavy}(S)
+=
+\left\lfloor
+100 \cdot 2^{k} \cdot m(r)
+\right\rfloor
+\]
+
+\[
+\text{Medium}(S)
+=
+\left\lfloor
+\frac{2}{3}\,\text{Heavy}(S)
+\right\rfloor
+\]
+
+\[
+\text{Light}(S)
+=
+\left\lfloor
+\frac{1}{3}\,\text{Heavy}(S)
+\right\rfloor
+\]
+
+\subsection*{Full Combined Definition}
+
+\[
+(\text{Light}(S),\ \text{Medium}(S),\ \text{Heavy}(S))
+=
+\begin{cases}
+T(S), & S \le 9 \\[6pt]
+\left(
+\left\lfloor \frac{1}{3}H(S) \right\rfloor,\ 
+\left\lfloor \frac{2}{3}H(S) \right\rfloor,\ 
+H(S)
+\right),
+& S \ge 10
+\end{cases}
+\]
+
+\[
+H(S)
+=
+\left\lfloor
+100 \cdot 2^{\left\lfloor (S-10)/5 \right\rfloor}
+\cdot
+m\left( (S-10) \bmod 5 \right)
+\right\rfloor
+\]
+
+\subsection*{Piece 3 — Size Scaling}
+
+Each size category applies a uniform multiplier to all three load bands.
+Define the size multiplier function $s(Z)$ by:
+
+\[
+s(Z) =
+\begin{cases}
+\frac{1}{8} & Z = \text{Fine}, \\
+\frac{1}{4} & Z = \text{Diminutive}, \\
+\frac{1}{2} & Z = \text{Tiny}, \\
+\frac{3}{4} & Z = \text{Small}, \\
+1           & Z = \text{Medium}, \\
+2           & Z = \text{Large}, \\
+4           & Z = \text{Huge}, \\
+8           & Z = \text{Gargantuan}, \\
+16          & Z = \text{Colossal}.
+\end{cases}
+\]
+
+Let $\text{Light}(S)$, $\text{Medium}(S)$, and $\text{Heavy}(S)$ be the
+carrying-capacity values computed for a Medium creature (from Pieces 1–2).
+The size-adjusted load limits are then:
+
+\[
+\text{Light}_Z(S) =
+\left\lfloor
+\text{Light}(S) \cdot s(Z)
+\right\rfloor,
+\]
+
+\[
+\text{Medium}_Z(S) =
+\left\lfloor
+\text{Medium}(S) \cdot s(Z)
+\right\rfloor,
+\]
+
+\[
+\text{Heavy}_Z(S) =
+\left\lfloor
+\text{Heavy}(S) \cdot s(Z)
+\right\rfloor.
+\]
+
+
+\end{document}
