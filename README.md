@@ -28,7 +28,7 @@ The project is evolving and new features will be added over time, but the initia
 ### DEVELOPER ONLY: Getting Started
 
 **Prerequisites**
-- **Python 3.11** (recommended)
+- **Python 3.12** (recommended)
 - **pip** (Python package manager)
 - **Windows OS** (Jockle is currently Windows-only)
 
@@ -68,8 +68,6 @@ Jockle/
 ├── README.md               # Project documentation
 └── requirements.txt        # Python dependencies
 ```
-
-*Additional directories like `build/`, `dist/`, `secret/` and `database.db` are generated locally or ignored via `.gitignore` and are not included in the repository*
 
 ### PyWebview Deployment
 
