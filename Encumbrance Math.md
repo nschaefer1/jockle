@@ -69,7 +69,7 @@ $$
 Heavy load:
 
 $$
-\text{Heavy}(S)
+Heavy(S)
 =
 \left\lfloor
 100 \cdot 2^{k} \cdot m(r)
