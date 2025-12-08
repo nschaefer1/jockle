@@ -1,0 +1,23 @@
+{
+    "below_nine_strength": {
+        "strength": [1,2,3,4,5,6,7,8,9],
+        "light": [3,6,10,13,16,20,23,26,30],
+        "medium": [6,13,20,26,33,40,46,53,60],
+        "heavy": [10,20,30,40,50,60,70,80,90]
+    },
+    
+    "r_m_multiplier": [1.00, 1.15, 1.30, 1.5, 1.75],
+
+    "size_scaling": {
+        "Fine" : 0.125,
+        "Diminutive" : 0.25,
+        "Tiny" : 0.5,
+        "Small" : 0.75,
+        "Medium" : 1.0,
+        "Large" : 2,
+        "Huge" : 4,
+        "Gargantuan" : 8,
+        "Colossal" : 16
+    }
+
+}

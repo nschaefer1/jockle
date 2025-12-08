@@ -19,6 +19,10 @@ class API(APIGet, APIDelete, APIPatch, APIPost, APIPut):
     def __init__(self, db_manager):
         self.db_manager = db_manager # DB manager instance is passed in
         self.session = {}
+        
+        # FROM PATCH
+        if os.getenv("DEBUG") == 'true':
+            self.update_all_carry_bands()
 
     def resolve_path(self, rel_path: str) -> str:
         full = self.app_path(f'../frontend/{rel_path}')
