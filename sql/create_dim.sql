@@ -29,6 +29,8 @@ create table if not exists dim_character (
     cha_score integer,
 
     size_cat text check(size_cat in ('Fine','Diminutive','Tiny','Small','Medium','Large','Huge','Gargantuan','Colossal')),
+    leg_count integer,
+    band_override integer default 0 check(band_override in (0, 1)),
 
     light_band integer,
     medium_band integer,

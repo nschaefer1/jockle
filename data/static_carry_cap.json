@@ -18,6 +18,18 @@
         "Huge" : 4,
         "Gargantuan" : 8,
         "Colossal" : 16
+    },
+
+    "quad_size_scaling": {
+        "Fine" : 0.25,
+        "Diminutive" : 0.5,
+        "Tiny" : 0.75,
+        "Small" : 1.0,
+        "Medium" : 1.5,
+        "Large" : 3,
+        "Huge" : 6,
+        "Gargantuan" : 12,
+        "Colossal" : 24
     }
 
 }

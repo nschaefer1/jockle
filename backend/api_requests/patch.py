@@ -12,7 +12,7 @@ class APIPatch(BaseAPI):
     def __init__(self, db_manager):
         self.db_manager = db_manager
 
-    def _calculate_band(self, strength, size, band):
+    def _calculate_band(self, strength, size, band, quad_bool):
         '''
         Calculate the designated band column for the dim_character table
         
@@ -44,7 +44,11 @@ class APIPatch(BaseAPI):
             else:
                 calc = heavy_s
         # Apply size-scaling
-        scalar = json_stats['size_scaling'][size]
+        if quad_bool:
+            # If the character has more than 3 legs, than do this
+            scalar = json_stats['quad_size_scaling'][size]
+        else:
+            scalar = json_stats['size_scaling'][size]
         return math.floor(calc * scalar)
 
     def update_character_carry_bands(self, char_ck): 
@@ -67,13 +71,15 @@ class APIPatch(BaseAPI):
         # Access the strength and size variable
         str_index = db_result.columns.index("str_score")
         size_index = db_result.columns.index("size_cat")
+        leg_count = db_result.columns.index("leg_count")
         str_score = db_result.rows[0][str_index]
         size_cat = db_result.rows[0][size_index]
+        quad_bool = db_result.rows[0][leg_count] > 3
 
         # Calculate each individual band based on the strength and size of the candidate
-        light_band = self._calculate_band(str_score, size_cat, 'light')
-        medium_band = self._calculate_band(str_score, size_cat, 'medium')
-        heavy_band = self._calculate_band(str_score, size_cat, 'heavy')
+        light_band = self._calculate_band(str_score, size_cat, 'light', quad_bool)
+        medium_band = self._calculate_band(str_score, size_cat, 'medium', quad_bool)
+        heavy_band = self._calculate_band(str_score, size_cat, 'heavy', quad_bool)
 
         # Update the designated record and return a success result
         db_result = self.db_manager.execute(

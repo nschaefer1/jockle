@@ -164,10 +164,11 @@ class DBManager:
             r['int_score'],
             r['wis_score'],
             r['cha_score'],
-            r['size_cat']
+            r['size_cat'],
+            r['leg_count']
         ) for r in raw_rows]
         result = self.executemany(
-            'INSERT INTO dim_character (char_ck, char_name, str_score, dex_score, con_score, int_score, wis_score, cha_score, size_cat) VALUES (?,?,?,?,?,?,?,?,?) ON CONFLICT(char_ck) DO NOTHING;',
+            'INSERT INTO dim_character (char_ck, char_name, str_score, dex_score, con_score, int_score, wis_score, cha_score, size_cat, leg_count) VALUES (?,?,?,?,?,?,?,?,?,?) ON CONFLICT(char_ck) DO NOTHING;',
             rows
         )
         if not result.success:
