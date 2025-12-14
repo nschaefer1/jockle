@@ -15,7 +15,7 @@ class APIGet(BaseAPI):
         '''
         db_result = self.db_manager.execute_path('sql/inventory/char_inventory.sql', params=(char_ck,))
         if not db_result.success:
-            logging.exception('API GET Error: db_return return was unsuccessful')
+            logging.exception('API GET Error: db_return return was unsuccessful in getInventory')
             return APIResponse(success = False, message = 'API unable to pull from database').to_dict()
         
         logging.info('API GET: getInventory successful')
@@ -24,4 +24,20 @@ class APIGet(BaseAPI):
             data = self._pull_into_json(db_result.rows, db_result.columns)
         ).to_dict()
 
+    def getItemList(self, char_ck):
+        '''
+        Get all of the unique items in the database
+        
+        char_ck: filters the item list on what items the user currently has for a quick comparison
+        '''
+        db_result = self.db_manager.execute_path('sql/inventory/inventory_list.sql', params=(char_ck,))
+        if not db_result.success:
+            logging.exception('API GET Error: db_return return was unsuccessful in getItemList')
+            return APIResponse(success = False, message= 'API unable to pull from database').to_dict()
+        
+        logging.info('API GET: getItemList successful')
+        return APIResponse (
+            success = True,
+            data = self._pull_into_json(db_result.rows, db_result.columns)
+        ).to_dict()
         
