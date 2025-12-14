@@ -187,6 +187,48 @@ hr {
     padding: 1px 5px;
 }
 
+/* === Item Bars === */
+
+.item-bar {
+    display: flex;
+    padding: 6px 10px;
+    border: 2px solid #1f1b2e;
+    border-radius: 8px;
+    align-items: center;
+    background: #ffffff;
+    transition: background 0.15 ease, border-color 0.15s ease;
+    margin-bottom: 5px;
+}
+
+.item-bar:hover {
+    cursor: pointer;
+    border-color: #9d00ff;
+    background: #f4f0ff;
+}
+
+.item-bar.selected {
+    font-weight: bold;
+}
+
+.item-bar-icon {
+    width: 25px;
+    height: 25px;
+}
+
+.item-bar-name {
+    margin-left: 10px;
+    color: #1f1b2e;
+}
+
+.item-bar-count {
+    margin-left: auto;
+    margin-right: 10px;
+    color: #1f1b2e;
+    opacity: 0.7;
+    font-size: 11px;
+}
+
+
 /* === Search Bar === */
 
 .search-container {

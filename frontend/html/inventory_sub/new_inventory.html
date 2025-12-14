@@ -12,7 +12,7 @@
         <button class="back-btn" onclick="go('inventory')">←</button>
         <div class="top-bar" style="flex: 0;">
             
-            <h1>New/Add Inventory Item</h1>
+            <h1>Add/Modify Inventory Item</h1>
 
         </div>
 
@@ -21,13 +21,20 @@
         <div class="side-by-side">
 
             <div class="raised-container">
-                <input type="file" id="file-input">
-                <button type="main-btn" onclick="uploadBtnPress()">Upload</button>
-
+                <div class="item-bar">
+                    <img src="../../assets/icons/uncertainty.png" class="item-bar-icon">
+                    <div class="item-bar-name">This is a testing Item</div>
+                    <div class="item-bar-count">Current Count: 0</div>
+                </div>
                 
             </div>
 
             <div class="raised-container details" id="details-area">
+                <h2>Custom Icon Upload</h2>
+                <input type="file" id="file-input">
+                <button type="main-btn" onclick="uploadBtnPress()">Upload</button>
+
+
                 
             </div>
             
