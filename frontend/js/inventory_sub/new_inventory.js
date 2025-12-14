@@ -21,6 +21,7 @@ async function init(api) {
         // Create a div element of the item-bar
         const item_bar = document.createElement('div');
         item_bar.className = 'item-bar';
+        item_bar.setAttribute('data-name', item.inv_name);
 
         // Create a img element for item-bar-icon
         const img = document.createElement('img'); 
@@ -50,6 +51,25 @@ async function init(api) {
 
         // Add the item-bar to the main container
         container.appendChild(item_bar);
+    });
+
+    // Search bar event listener
+    document.getElementById('inventory-search').addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase();
+
+        document.querySelectorAll('.item-bar').forEach(bar => {
+            bar.classList.remove('selected');
+            const name = bar.getAttribute('data-name')?.toLowerCase() ?? "";
+            bar.style.display = name.includes(term) ? 'flex' : 'none';
+        });
+    });
+
+    // Search bar clear event listener
+    const search_input = document.getElementById('inventory-search');
+    const clearBtn = document.getElementById('clear-search');
+    clearBtn.addEventListener('click', () => {
+        search_input.value = "";
+        search_input.dispatchEvent(new Event('input')); // reruns the filter logic
     });
     
 }
