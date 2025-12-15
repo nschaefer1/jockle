@@ -40,4 +40,25 @@ class APIGet(BaseAPI):
             success = True,
             data = self._pull_into_json(db_result.rows, db_result.columns)
         ).to_dict()
+
+    def getItemStats(self, inv_ck):
+        '''
+        Get the associated stats with the given item
+        
+        inv_ck: inventory contrived key, the unique identiifer for the item you are trying to get the stats for        
+        '''
+        db_result = self.db_manager.execute(
+            'select stat_name, val from ft_item_stats where inv_ck = ?;',
+            params=(inv_ck,)
+        )
+        if not db_result.success:
+            logging.exception('API GET Error: db_return return was unsuccessful in getItemStats')
+            return APIResponse(success=False, message='API unable to pull from database').to_dict()
+        
+        logging.info('API GET: getItemStats successful')
+        return APIResponse(
+            success = True,
+            data = self._pull_into_json(db_result.rows, db_result.columns)
+        ).to_dict()
+    
         

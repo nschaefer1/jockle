@@ -6,7 +6,7 @@ async function init(api) {
     let sel_char_ck = await api.get_session('sel_char_ck');
     let response = await api.getItemList(sel_char_ck);
     if (!response.success) {
-        console.log('API Call Failed');
+        console.error('API Call Failed');
         // TODO add error message in container if possible
         return
     };
@@ -49,7 +49,7 @@ async function init(api) {
         item_bar.appendChild(item_bar_count);
 
         // Add the click listener for the item-bar
-        item_bar.addEventListener('click', () => {
+        item_bar.addEventListener('click', async () => {
             console.log('Clicked item: ', item.inv_ck);
             // Remove any selected elements
             document.querySelectorAll('.item-bar.selected').forEach(bar => {
@@ -60,10 +60,30 @@ async function init(api) {
             // Show the stuff in the details container
             const details_container = document.getElementById('details-area');
             details_container.classList.remove('hidden');
-            // Clear HTML content
-            details_container. innerHTML = `
+            // Grab the stats list from the API
+            let response_item = await api.getItemStats(item.inv_ck);
+            if (!response_item.success) {
+                console.error('API Call Filed');
+                // TODO add a message in the details if this errors
+                return;
+            };
+            console.log('API call successful');
+            // Build the stats HTML
+            let stats_html = '';
+            if (response_item.data.length > 0) {
+                stats_html = '<ul class="item-stats">';
+                response_item.data.forEach(stat => {
+                    stats_html += `<li><strong>${stat.stat_name}:</strong> ${stat.val}</li>`;
+                });
+                stats_html += '</ul>';
+            } else {
+                stats_html = '<p><em>No additional stats</em></p>';
+            }
+            // Render everything
+            details_container.innerHTML = `
                 <h2>${item.inv_name}</h2>
-                <p>${item.inv_desc}</p>
+                <p>${item.inv_desc || 'No description available.'}</p>
+                ${stats_html}
             `;
         });
 
