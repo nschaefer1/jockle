@@ -52,7 +52,7 @@ async function init(api) {
         item_bar.addEventListener('click', () => {
             console.log('Clicked item: ', item.inv_ck);
             // Remove any selected elements
-            document.querySelectorAll('.item_bar').forEach(bar => {
+            document.querySelectorAll('.item-bar.selected').forEach(bar => {
                 bar.classList.remove('selected');
             });
             // Trigger selection
@@ -61,7 +61,6 @@ async function init(api) {
             const details_container = document.getElementById('details-area');
             details_container.classList.remove('hidden');
             // Clear HTML content
-            details_container.innerHTML = ``;
             details_container. innerHTML = `
                 <h2>${item.inv_name}</h2>
                 <p>${item.inv_desc}</p>
