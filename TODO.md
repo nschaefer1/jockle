@@ -12,7 +12,26 @@
    - If it does not exist → set `icon_path = NULL` (safe fallback)
 
 
+# Add/Modify Inventory Item Screen
+
+This page is specifically for adding items to the inventory that currently do not exist in the inventory. Outstanding items on the page are as follows:
+
+1. Create an event listener to "Select" the items
+2. Selected items should showup on the righthand side in the details window
+3. Users should be able to "edit" the selected item
+4. Users can "select" how many of the said item they want to add
+5. Press "add button"
+   1. This should add some transactions to the database
+   2. How can we reflect these changes? Is there anyway to reselect the item after we do the "push" to the DB? Refreshing the page? Not sure how this would work.
+6. Create a "remove item from DB"
+   1. This will remove the item from the entire database and would impact other characters
+   2. There should be a check on the other characters
+   3. Ensure we delete from the actual inventory - check the PRAGMA command and cascading rules in the DB
+
+
 # New Inventory Item Screen
+
+This page is specifically for adding items to the database that do not exist. This should exist over the add/modify inventory item screen, I'm thinking about a pop-up similar to the inventory thing that we have.
 
 1. Create page
 2. Screen must include:
@@ -25,6 +44,12 @@
 4. On save → insert into DB with string `icon_path`
 
 # Edit Inventory Item Screen
+
+This page is going to be similar to the new inventory item screen, but is going to be a slightly different module. The "Edit" is going to popover the current screen but as a slide in and nothing really aggressive. You can overwrite the item or "create a new item" -- you will have to change the name though. The actual data doesn't get edited though.
+
+If the overwrite button is pressed, then you have to ensure the item name changes. If you press "overwrite item" it will update the CK of the item.
+
+These items are *shared between characters*...maybe this isn't something we want to do but I'd imagine items are something you'd want to be able to share between characters and campaigns. 
 
 1. Create a second full-screen page similar to the `New Inventory Item Screen`
 2. Pre-populate all fields
@@ -40,11 +65,15 @@
 
 # Main Inventory Page
 
+This is the primary page for the application.
+
 1. Add EDIT button with proper enable/disable logic
 2. Add New Item button that opens the new item screen
 3. Ensure selected item's details panel is updating using the new weight + icon system
 
 # Inventory Interaction
+
+This is just side stuff.
 
 1. Add/Remove quantity buttons in details panel
 2. Decide behavior when quantity hits zero
