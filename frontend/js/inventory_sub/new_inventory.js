@@ -13,7 +13,6 @@ async function init(api) {
 
     // Log the API call success
     console.log('API call successful');
-    console.log(response.data);
 
     // Populate the container with the div elements
     const container = document.getElementById('inventory-list');
