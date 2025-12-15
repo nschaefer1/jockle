@@ -48,9 +48,31 @@ async function init(api) {
         item_bar_count.textContent = `Current Count: ${formatted_num}`;
         item_bar.appendChild(item_bar_count);
 
+        // Add the click listener for the item-bar
+        item_bar.addEventListener('click', () => {
+            console.log('Clicked item: ', item.inv_ck);
+            // Remove any selected elements
+            document.querySelectorAll('.item_bar').forEach(bar => {
+                bar.classList.remove('selected');
+            });
+            // Trigger selection
+            item_bar.classList.add('selected');
+            // Show the stuff in the details container
+            const details_container = document.getElementById('details-area');
+            details_container.classList.remove('hidden');
+            // Clear HTML content
+            details_container.innerHTML = ``;
+            details_container. innerHTML = `
+                <h2>${item.inv_name}</h2>
+                <p>${item.inv_desc}</p>
+            `;
+        });
+
         // Add the item-bar to the main container
         container.appendChild(item_bar);
     });
+
+
 
     // Search bar event listener
     document.getElementById('inventory-search').addEventListener('input', (e) => {
