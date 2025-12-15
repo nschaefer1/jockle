@@ -132,7 +132,6 @@ class DBManager:
         This should not be ran outside of development
         '''
        
-
         # dim_inventory seeding
         raw_rows = load_csv('sql/csv_seeds/seed_dim_inventory.csv')
         rows = [(
@@ -188,3 +187,17 @@ class DBManager:
         )
         if not result.success:
             raise RuntimeError('Database ft_inventory seeding failed')
+        
+        # ft_item_stats seeding
+        raw_rows = load_csv('sql/csv_seeds/seed_ft_item_stats.csv')
+        rows = [(
+            r['inv_ck'],
+            r['stat_name'],
+            r['val']
+        ) for r in raw_rows]
+        result = self.executemany(
+            'INSERT INTO ft_item_stats (inv_ck, stat_name, val) VALUES (?, ?, ?) ON CONFLICT(inv_ck, stat_name) DO UPDATE SET val = excluded.val;',
+            rows
+        )
+        if not result.success:
+            raise RuntimeError('Database ft_item_stats seeding failed')

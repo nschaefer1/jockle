@@ -1,0 +1,55 @@
+﻿inv_ck,stat_name,val
+1,Stealth Bonus,20
+1,Message Range Bonus,15
+2,Attack,18
+2,Cold Damage,15
+2,Freeze Chance,20
+2,Durability,75
+3,Stealth Bonus,30
+3,Invisibility Duration,25
+4,Magic Attack,25
+4,Max Charges,12
+4,Laughter DC Bonus,15
+5,Jump Bonus,30
+7,Magic Attack,40
+7,Nature Damage,25
+7,Max Charges,20
+8,Tracking Bonus,25
+8,Stealth Bonus,20
+9,Attack,8
+9,Durability,50
+10,Attack,8
+11,Defense,12
+13,Healing Amount,15
+15,Speed Bonus,15
+16,Attack,12
+16,Durability,60
+17,Defense,12
+18,Attack,20
+18,Durability,80
+19,Max HP Bonus,15
+21,Magic Attack,15
+21,Cold Damage,12
+26,Defense,6
+27,Attack,8
+30,Attack,12
+32,Resistance Bonus,15
+36,Attack,12
+37,Message Range Bonus,20
+39,Fire Damage,15
+40,Defense,6
+41,Attack,8
+42,Max HP Bonus,10
+43,Stealth Bonus,20
+46,Healing Power,25
+47,Defense,8
+49,Fire Damage,15
+50,Jump Bonus,20
+53,Attack,25
+54,Defense,15
+56,Defense,6
+59,Attack,8
+60,Speed Bonus,10
+62,Attack,20
+62,Stealth Bonus,25
+66,Defense,12
