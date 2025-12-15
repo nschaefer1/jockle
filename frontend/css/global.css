@@ -203,11 +203,13 @@ hr {
 .item-bar:hover {
     cursor: pointer;
     border-color: #9d00ff;
-    background: #f4f0ff;
 }
 
 .item-bar.selected {
     font-weight: bold;
+    border-color: #9d00ff;
+    box-shadow: 0 0 5px rgba(157, 0, 255, 0.3);
+    background: #f4f0ff;
 }
 
 .item-bar-icon {
