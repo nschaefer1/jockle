@@ -16,8 +16,9 @@
 
 This page is specifically for adding items to the inventory that currently do not exist in the inventory. Outstanding items on the page are as follows:
 
-1. Create an event listener to "Select" the items
-2. Selected items should showup on the righthand side in the details window
+  
+1. Need to add an icon viewing for the item itself
+2. Fix the CSS on the stat viewing, maybe we should make some sort of list
 3. Users should be able to "edit" the selected item
 4. Users can "select" how many of the said item they want to add
 5. Press "add button"
