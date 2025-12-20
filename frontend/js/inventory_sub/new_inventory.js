@@ -145,3 +145,27 @@ async function uploadBtnPress() {
 
         reader.readAsDataURL(file);
     };
+
+// Functions for the overlay
+const openBtn = document.getElementById('add-new-card');
+const closeBtn = document.getElementById('closeOverlay');
+const overlay = document.getElementById('bottomOverlay');
+const backdrop = document.getElementById('overlayBackdrop');
+
+function openOverlay() {
+    overlay.classList.add('active');
+    backdrop.classList.add('active');
+}
+
+function closeOverlay() {
+    overlay.classList.remove('active');
+    backdrop.classList.remove('active');
+}
+
+openBtn.addEventListener('click', openOverlay);
+closeBtn.addEventListener('click', closeOverlay);
+backdrop.addEventListener('click', closeOverlay);
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeOverlay();
+});

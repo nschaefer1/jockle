@@ -32,16 +32,27 @@
             </div>
 
             <div class="raised-container details" id="details-area">
+                
+
+
                 <h2>Custom Icon Upload</h2>
                 <input type="file" id="file-input">
                 <button type="main-btn" onclick="uploadBtnPress()">Upload</button>
-
-
-                
             </div>
-            
         </div>
+    </div>
 
+    <div class="overlay-backdrop" id="overlayBackdrop"></div>
+
+    <div class="bottom-overlay" id="bottomOverlay">
+        <div class="overlay-header">
+            <div class="overlay-title">Overlay Panel</div>
+            <button class="overlay-close" id="closeOverlay">X</button>
+        </div>
+        <div class="overlay-content">
+            <p>This is your overlay content.</p>
+            <p>75% viewport hieght, slides from bottom.</p>
+        </div>
     </div>
 
     <p class="hint">Press F5 or Ctrl + R to Refresh</p>
